@@ -53,6 +53,9 @@ function Item({ item, setTodos }) {
   const handleInputBlur = () => {
     setEditing(false);
   };
+  const handleDelete = () => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== item.id));
+  };
   return (
     <li id={item?.id} className="todo_item">
       {editing ? (
@@ -118,7 +121,7 @@ function Item({ item, setTodos }) {
                 />
               </svg>
             </button>
-            <button>
+            <button onClick={handleDelete}>
               <span className="visually-hidden">Delete</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
