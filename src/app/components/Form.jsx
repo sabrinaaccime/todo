@@ -1,13 +1,20 @@
 "use client";
 
-function Form({ setTodos }) {
+function Form({ todos, setTodos }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const value = event.target.todo.value;
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      { title: value, id: self.crypto.randomUUID(), is_completed: false },
-    ]);
+    const newTodo = {
+      title: value,
+      id: self.crypto.randomUUID(),
+      is_completed: false,
+    };
+    // Update todo state
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+
+    // Store updated todo list in local storage
+    const updatedTodoList = JSON.stringify([...todos, newTodo]);
+    localStorage.setItem("todos", updatedTodoList);
     event.target.reset();
   };
   return (

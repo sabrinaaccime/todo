@@ -8,8 +8,17 @@ import TODOList from "./components/TODOList";
 
 function Home() {
   const [todos, setTodos] = React.useState([]);
+
+  // Retrieve data from localStorage when components is loaded
+  React.useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if(storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
   const todos_completed = todos.filter(
-    (todo) => todo.is_completed === true
+    (todo) => todo.is_completed == true
   ).length;
   const total_todos = todos.length;
   return (
