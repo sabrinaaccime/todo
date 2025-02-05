@@ -6,7 +6,7 @@ function TODOList({ todos, setTodos }) {
       {todos && todos.length > 0 ? (
         todos?.map((item, index) => (
           // Pass the todos to the <Item />
-          <Item key={index} item={item} setTodos={setTodos} />
+          <Item key={index} item={item} todos={todos} setTodos={setTodos} />
         ))
       ) : (
         <p>Seems lonely in here, what are you up to?</p>
@@ -68,7 +68,7 @@ function Item({ item, todos, setTodos }) {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== item.id));
     // Update localstorage after deleting todo
     const updatedTodos = JSON.stringify(
-      todos.fliter((todo) => todo.id !== item.id)
+      todos.filter((todo) => todo.id !== item.id)
     );
     localStorage.setItem("todos", updatedTodos);
   };

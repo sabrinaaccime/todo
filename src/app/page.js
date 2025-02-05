@@ -12,7 +12,7 @@ function Home() {
   // Retrieve data from localStorage when components is loaded
   React.useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
-    if(storedTodos) {
+    if(storedTodos && storedTodos !== 'undefined') {
       setTodos(JSON.parse(storedTodos));
     }
   }, []);
