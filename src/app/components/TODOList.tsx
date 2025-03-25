@@ -101,7 +101,7 @@ function Item({ item, todos, setTodos }) {
               width={34}
               height={34}
               stroke="#22C55E"
-              fill={item.is_completed ? "#22C55E" : "0d0d0d"}
+              fill={item.is_completed ? "#333333" : "#4CAF50"}
             >
               <circle
                 cx="11.998"
